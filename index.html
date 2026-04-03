@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thrombus Formation — AI Model Comparison</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #080808;
+      --surface: #0f0f0f;
+      --surface-2: #141414;
+      --border: #1f1f1f;
+      --border-hover: #383838;
+      --text: #efefef;
+      --text-2: #999;
+      --text-3: #4a4a4a;
+      --accent: #d97952;
+      --radius: 12px;
+      --radius-sm: 6px;
+    }
+
+    body {
+      background-color: var(--bg);
+      /* subtle dot grid for depth */
+      background-image: radial-gradient(circle, #161616 1px, transparent 1px);
+      background-size: 28px 28px;
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      min-height: 100vh;
+      line-height: 1.5;
+    }
+
+    /* ── Header ─────────────────────────────── */
+    .header {
+      max-width: 1360px;
+      margin: 0 auto;
+      padding: 56px 32px 40px;
+    }
+
+    .header-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .eyebrow-pulse {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 10px var(--accent);
+      flex-shrink: 0;
+    }
+
+    .header-label {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-3);
+    }
+
+    .header-title {
+      font-size: clamp(24px, 3.2vw, 40px);
+      font-weight: 800;
+      letter-spacing: -0.8px;
+      line-height: 1.15;
+      margin-bottom: 22px;
+      background: linear-gradient(135deg, #fff 30%, #666 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .prompt-box {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: var(--radius-sm);
+      padding: 14px 18px;
+      font-size: 13px;
+      color: #b0b0b0;
+      max-width: 820px;
+      margin-bottom: 24px;
+      line-height: 1.65;
+    }
+
+    .prompt-label {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--accent);
+      white-space: nowrap;
+      padding-top: 2px;
+    }
+
+    .header-meta {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .meta-chip {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 4px 12px;
+      font-size: 11px;
+      color: var(--text-3);
+      letter-spacing: 0.3px;
+    }
+
+    /* ── Divider ─────────────────────────────── */
+    .divider {
+      max-width: 1360px;
+      margin: 0 auto;
+      border: none;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── Grid ────────────────────────────────── */
+    .grid {
+      max-width: 1360px;
+      margin: 0 auto;
+      padding: 32px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    @media (max-width: 960px) {
+      .grid { grid-template-columns: repeat(2, 1fr); padding: 20px; gap: 14px; }
+    }
+    @media (max-width: 600px) {
+      .grid { grid-template-columns: 1fr; padding: 16px; gap: 12px; }
+    }
+
+    /* ── Card ────────────────────────────────── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    }
+    .card:hover {
+      border-color: var(--border-hover);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.03);
+      transform: translateY(-3px);
+    }
+
+    .card-top {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .model-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .model-name {
+      font-size: 13px;
+      font-weight: 600;
+      flex: 1;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .type-badge {
+      font-size: 9px;
+      font-weight: 700;
+      color: var(--text-3);
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 2px 7px;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+
+    /* ── Preview area ───────────────────────── */
+    .card-preview {
+      position: relative;
+      height: 390px;
+      overflow: hidden;
+      cursor: zoom-in;
+      background: #060606;
+      flex-shrink: 0;
+    }
+    .card-preview::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 80px;
+      background: linear-gradient(transparent, rgba(6,6,6,0.92));
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .card-preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+      transition: transform 0.35s ease;
+    }
+    .card:hover .card-preview img {
+      transform: scale(1.025);
+    }
+
+    .iframe-scaler {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 233.33%;
+      height: 233.33%;
+      transform: scale(0.429);
+      transform-origin: top left;
+      border: none;
+      pointer-events: none;
+    }
+
+    .expand-hint {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(6px);
+      color: #ccc;
+      font-size: 10px;
+      padding: 5px 10px;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.08);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.2s;
+      z-index: 2;
+      letter-spacing: 0.3px;
+    }
+    .card-preview:hover .expand-hint { opacity: 1; }
+
+    /* ── Card footer ─────────────────────────── */
+    .card-footer {
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .card-filename {
+      font-size: 10px;
+      font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+      color: var(--text-3);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      flex: 1;
+      min-width: 0;
+      margin-right: 10px;
+    }
+    .open-btn {
+      font-size: 11px;
+      color: var(--text-2);
+      text-decoration: none;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 4px 12px;
+      white-space: nowrap;
+      transition: background 0.15s, color 0.15s, border-color 0.15s;
+      flex-shrink: 0;
+    }
+    .open-btn:hover { background: #222; color: #fff; border-color: #444; }
+    .open-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 20px; }
+
+    /* ── Modal ───────────────────────────────── */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.9);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      backdrop-filter: blur(10px);
+    }
+    .modal-overlay.open { display: flex; }
+    .modal-overlay.open .modal-box {
+      animation: modalIn 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes modalIn {
+      from { opacity: 0; transform: scale(0.95) translateY(12px); }
+      to   { opacity: 1; transform: scale(1)    translateY(0); }
+    }
+
+    .modal-box {
+      position: relative;
+      width: 92vw;
+      height: 92vh;
+      background: #0d0d0d;
+      border-radius: 16px;
+      border: 1px solid #2c2c2c;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 32px 96px rgba(0,0,0,0.7);
+    }
+    .modal-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 18px;
+      border-bottom: 1px solid #1e1e1e;
+      flex-shrink: 0;
+    }
+    .modal-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .modal-title {
+      font-size: 14px;
+      font-weight: 600;
+      flex: 1;
+    }
+    .modal-close {
+      background: #1e1e1e;
+      border: 1px solid #2e2e2e;
+      color: #888;
+      cursor: pointer;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s, color 0.15s, border-color 0.15s;
+      flex-shrink: 0;
+    }
+    .modal-close:hover { background: #2e2e2e; color: #fff; border-color: #444; }
+    .modal-close:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+    .modal-frame {
+      flex: 1;
+      width: 100%;
+      border: none;
+      display: block;
+    }
+
+    /* ── Footer ──────────────────────────────── */
+    .page-footer {
+      max-width: 1360px;
+      margin: 0 auto;
+      padding: 28px 32px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-text {
+      font-size: 12px;
+      color: var(--text-3);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .footer-sep {
+      width: 1px;
+      height: 12px;
+      background: var(--border);
+    }
+
+    .kbd {
+      display: inline-flex;
+      align-items: center;
+      background: var(--surface-2);
+      border: 1px solid #2a2a2a;
+      border-bottom-width: 2px;
+      border-radius: 4px;
+      padding: 1px 6px;
+      font-size: 10px;
+      font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+      color: var(--text-3);
+      line-height: 1.4;
+    }
+
+    /* ── Reduced motion ──────────────────────── */
+    @media (prefers-reduced-motion: reduce) {
+      .card, .card-preview img, .open-btn, .modal-close { transition: none; }
+      @keyframes modalIn {
+        from { opacity: 1; transform: none; }
+        to   { opacity: 1; transform: none; }
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="header-eyebrow">
+      <div class="eyebrow-pulse"></div>
+      <div class="header-label">AI Benchmark · Visual Output</div>
+    </div>
+    <h1 class="header-title">Thrombus Formation — 9 Models Compared</h1>
+    <div class="prompt-box">
+      <span class="prompt-label">Prompt</span>
+      <span>Draw the entire thrombus (blood clot) formation process as a detailed scientific infographic. Show each stage: normal vessel → endothelial injury → platelet adhesion → coagulation cascade → stable thrombus. Include labels, flow arrows, and a legend.</span>
+    </div>
+    <div class="header-meta">
+      <span class="meta-chip">9 models</span>
+      <span class="meta-chip">April 2026</span>
+      <span class="meta-chip">SVG + HTML output</span>
+      <span class="meta-chip">Same prompt · Zero edits</span>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="grid" id="grid"></div>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="modal" onclick="handleOverlayClick(event)">
+    <div class="modal-box">
+      <div class="modal-header">
+        <div class="modal-dot" id="modalDot"></div>
+        <span class="modal-title" id="modalTitle"></span>
+        <button class="modal-close" onclick="closeModal()" aria-label="Close modal">✕</button>
+      </div>
+      <iframe class="modal-frame" id="modalFrame" src="" allow="scripts"></iframe>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span class="footer-text">Click any card to view full output</span>
+    <div class="footer-sep"></div>
+    <span class="footer-text">Press <kbd class="kbd">Esc</kbd> to close</span>
+    <div class="footer-sep"></div>
+    <span class="footer-text">No post-processing applied</span>
+  </div>
+
+  <script>
+    const models = [
+      { name: "Claude Opus 4.6",        file: "Claude Opus 4.6.svg",                  type: "SVG",  color: "#CC785C" },
+      { name: "Claude Sonnet 4.6",      file: "Claude sonnet 4.6.html",               type: "HTML", color: "#CC785C" },
+      { name: "GPT 5.4",                file: "GPT 5.4.svg",                          type: "SVG",  color: "#10A37F" },
+      { name: "Gemini 3.1 Pro Preview", file: "Gemini 3.1 pro preview.svg",           type: "SVG",  color: "#4285F4" },
+      { name: "Grok 4.2 Fast",          file: "Grok 4.2 fast.svg",                   type: "SVG",  color: "#e7e7e7" },
+      { name: "DeepSeek",               file: "deepseek_svg_20260402_b31446.svg",     type: "SVG",  color: "#4472CA" },
+      { name: "GLM 5V Turbo",           file: "glm 5v turbo.svg",                    type: "SVG",  color: "#00B4D8" },
+      { name: "Minimax M2.7",           file: "Minimax M2.7.html",                   type: "HTML", color: "#6366F1" },
+      { name: "Qwen 3.6 Plus",          file: "qwen 3.6 plus.html",                  type: "HTML", color: "#6042A6" },
+    ];
+
+    const grid = document.getElementById("grid");
+
+    models.forEach((m) => {
+      const enc = encodeURIComponent(m.file);
+
+      let previewHTML;
+      if (m.type === "SVG") {
+        previewHTML = `<img src="${enc}" alt="${m.name}" loading="lazy" draggable="false">`;
+      } else {
+        previewHTML = `<iframe class="iframe-scaler" src="${enc}" scrolling="no" sandbox="allow-scripts allow-same-origin" title="${m.name} preview"></iframe>`;
+      }
+
+      const card = document.createElement("div");
+      card.className = "card";
+      card.innerHTML = `
+        <div class="card-top">
+          <div class="model-dot" style="background:${m.color}"></div>
+          <span class="model-name">${m.name}</span>
+          <span class="type-badge">${m.type}</span>
+        </div>
+        <div class="card-preview" data-file="${enc}" data-name="${m.name}" data-color="${m.color}">
+          ${previewHTML}
+          <div class="expand-hint">↗ expand</div>
+        </div>
+        <div class="card-footer">
+          <span class="card-filename">${m.file}</span>
+          <a class="open-btn" href="${enc}" target="_blank" rel="noopener" onclick="event.stopPropagation()">Open ↗</a>
+        </div>
+      `;
+
+      card.querySelector(".card-preview").addEventListener("click", (e) => {
+        const p = e.currentTarget;
+        openModal(p.dataset.file, p.dataset.name, p.dataset.color);
+      });
+
+      grid.appendChild(card);
+    });
+
+    function openModal(file, name, color) {
+      document.getElementById("modalDot").style.background = color;
+      document.getElementById("modalTitle").textContent = name;
+      document.getElementById("modalFrame").src = file;
+      document.getElementById("modal").classList.add("open");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeModal() {
+      document.getElementById("modal").classList.remove("open");
+      document.getElementById("modalFrame").src = "";
+      document.body.style.overflow = "";
+    }
+
+    function handleOverlayClick(e) {
+      if (e.target === document.getElementById("modal")) closeModal();
+    }
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeModal();
+    });
+  </script>
+</body>
+</html>
