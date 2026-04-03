@@ -1,0 +1,189 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 650" width="100%" height="100%" style="background-color: #f8f9fa; font-family: 'Segoe UI', Arial, sans-serif;">
+  <defs>
+    <!-- 卡片阴影滤镜 -->
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="2" dy="4" stdDeviation="4" flood-color="#000" flood-opacity="0.08"/>
+    </filter>
+    
+    <!-- 箭头标记 -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#95a5a6"/>
+    </marker>
+
+    <!-- 红细胞渐变 -->
+    <radialGradient id="rbcGrad" cx="30%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#ff6b6b"/>
+      <stop offset="100%" stop-color="#c0392b"/>
+    </radialGradient>
+
+    <!-- 血小板渐变 -->
+    <radialGradient id="plateGrad" cx="30%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#dda0dd"/>
+      <stop offset="100%" stop-color="#8b008b"/>
+    </radialGradient>
+  </defs>
+
+  <!-- 标题 -->
+  <text x="500" y="40" text-anchor="middle" font-size="24" font-weight="bold" fill="#2c3e50">The Process of Thrombosis (Blood Clot Formation)</text>
+
+  <!-- ================= 步骤 1: 血管损伤 ================= -->
+  <g transform="translate(20, 80)">
+    <!-- 卡片 -->
+    <rect x="0" y="0" width="170" height="480" rx="8" fill="#ffffff" filter="url(#shadow)" stroke="#e0e0e0" stroke-width="1"/>
+    <rect x="0" y="0" width="170" height="40" rx="8" fill="#f0f8ff"/>
+    <text x="85" y="25" text-anchor="middle" font-size="15" font-weight="bold" fill="#2980b9">1. Vessel Injury</text>
+    
+    <!-- 图形: 血管 -->
+    <rect x="20" y="140" width="130" height="160" rx="6" fill="#fdfefe" stroke="#bdc3c7" stroke-width="2"/>
+    <!-- 内皮 -->
+    <rect x="20" y="140" width="130" height="25" fill="#e8f4f8" stroke="#bdc3c7" stroke-width="1"/>
+    <text x="85" y="156" text-anchor="middle" font-size="9" fill="#7f8c8d">Endothelium</text>
+    
+    <!-- 平滑肌 -->
+    <rect x="20" y="165" width="130" height="135" fill="#f9ebea" stroke="#bdc3c7" stroke-width="1"/>
+    <text x="85" y="250" text-anchor="middle" font-size="9" fill="#e74c3c">Smooth Muscle</text>
+
+    <!-- 损伤 -->
+    <rect x="60" y="140" width="40" height="15" fill="#fadbd8" stroke="#e74c3c" stroke-width="1.5"/>
+    <path d="M 65 155 L 75 180 L 95 155 L 85 190 Z" fill="#d2b48c"/>
+    <text x="80" y="205" text-anchor="middle" font-size="9" fill="#8b4513">Collagen</text>
+    
+    <text x="85" y="370" text-anchor="middle" font-size="11" fill="#34495e">
+      <tspan x="85" dy="0">Damage exposes</tspan>
+      <tspan x="85" dy="15">subendothelial</tspan>
+      <tspan x="85" dy="15">collagen.</tspan>
+    </text>
+  </g>
+
+  <!-- 箭头 1->2 -->
+  <line x1="190" y1="320" x2="210" y2="320" stroke="#95a5a6" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- ================= 步骤 2: 血小板粘附 ================= -->
+  <g transform="translate(215, 80)">
+    <rect x="0" y="0" width="170" height="480" rx="8" fill="#ffffff" filter="url(#shadow)" stroke="#e0e0e0" stroke-width="1"/>
+    <rect x="0" y="0" width="170" height="40" rx="8" fill="#f0f8ff"/>
+    <text x="85" y="25" text-anchor="middle" font-size="15" font-weight="bold" fill="#2980b9">2. Platelet Adhesion</text>
+    
+    <!-- 图形: 血管 -->
+    <rect x="20" y="140" width="130" height="160" rx="6" fill="#fdfefe" stroke="#bdc3c7" stroke-width="2"/>
+    <rect x="20" y="140" width="130" height="25" fill="#e8f4f8" stroke="#bdc3c7" stroke-width="1"/>
+    
+    <!-- 损伤与粘附 -->
+    <rect x="60" y="140" width="40" height="15" fill="#fadbd8" stroke="#e74c3c" stroke-width="1.5"/>
+    <path d="M 65 155 L 75 180 L 95 155 L 85 190 Z" fill="#d2b48c"/>
+    
+    <!-- 血小板粘附 -->
+    <circle cx="70" cy="145" r="10" fill="url(#plateGrad)"/>
+    <path d="M 70 135 L 70 130 M 70 155 L 70 160 M 60 145 L 55 145 M 80 145 L 85 145" stroke="#8b008b" stroke-width="2"/>
+    <circle cx="95" cy="150" r="8" fill="url(#plateGrad)"/>
+    
+    <!-- vWF -->
+    <path d="M 50 180 Q 60 170 70 180 T 90 170" fill="none" stroke="#e67e22" stroke-width="2" stroke-dasharray="3,3"/>
+    <text x="85" y="210" text-anchor="middle" font-size="8" fill="#e67e22">vWF</text>
+
+    <text x="85" y="370" text-anchor="middle" font-size="11" fill="#34495e">
+      <tspan x="85" dy="0">Platelets stick to</tspan>
+      <tspan x="85" dy="15">collagen via vWF</tspan>
+      <tspan x="85" dy="15">and become active.</tspan>
+    </text>
+  </g>
+
+  <!-- 箭头 2->3 -->
+  <line x1="385" y1="320" x2="405" y2="320" stroke="#95a5a6" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- ================= 步骤 3: 血小板聚集 ================= -->
+  <g transform="translate(410, 80)">
+    <rect x="0" y="0" width="170" height="480" rx="8" fill="#ffffff" filter="url(#shadow)" stroke="#e0e0e0" stroke-width="1"/>
+    <rect x="0" y="0" width="170" height="40" rx="8" fill="#f0f8ff"/>
+    <text x="85" y="25" text-anchor="middle" font-size="15" font-weight="bold" fill="#2980b9">3. Platelet Aggregation</text>
+    
+    <!-- 图形: 聚集的血小板 -->
+    <circle cx="60" cy="200" r="12" fill="url(#plateGrad)"/>
+    <circle cx="85" cy="190" r="14" fill="url(#plateGrad)"/>
+    <circle cx="110" cy="210" r="11" fill="url(#plateGrad)"/>
+    <circle cx="75" cy="225" r="13" fill="url(#plateGrad)"/>
+    <circle cx="100" cy="240" r="10" fill="url(#plateGrad)"/>
+    <circle cx="50" cy="220" r="9" fill="url(#plateGrad)"/>
+    
+    <!-- 化学物质释放 -->
+    <circle cx="120" cy="180" r="3" fill="#e74c3c"/>
+    <circle cx="130" cy="175" r="2" fill="#e74c3c"/>
+    <circle cx="45" cy="170" r="3" fill="#e74c3c"/>
+    
+    <text x="85" y="280" text-anchor="middle" font-size="9" fill="#c0392b">ADP, TxA₂ release</text>
+    <text x="85" y="295" text-anchor="middle" font-size="9" fill="#c0392b">(Recruitment)</text>
+
+    <text x="85" y="370" text-anchor="middle" font-size="11" fill="#34495e">
+      <tspan x="85" dy="0">Activated platelets</tspan>
+      <tspan x="85" dy="15">recruit more platelets</tspan>
+      <tspan x="85" dy="15">to form a plug.</tspan>
+    </text>
+  </g>
+
+  <!-- 箭头 3->4 -->
+  <line x1="580" y1="320" x2="600" y2="320" stroke="#95a5a6" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- ================= 步骤 4: 凝血级联反应 ================= -->
+  <g transform="translate(605, 80)">
+    <rect x="0" y="0" width="170" height="480" rx="8" fill="#ffffff" filter="url(#shadow)" stroke="#e0e0e0" stroke-width="1"/>
+    <rect x="0" y="0" width="170" height="40" rx="8" fill="#f0f8ff"/>
+    <text x="85" y="25" text-anchor="middle" font-size="15" font-weight="bold" fill="#2980b9">4. Coagulation Cascade</text>
+    
+    <!-- 图形: 级联流程图 -->
+    <rect x="35" y="150" width="100" height="30" rx="4" fill="#f5f5f5" stroke="#3498db" stroke-width="1.5"/>
+    <text x="85" y="168" text-anchor="middle" font-size="10" fill="#2c3e50">Tissue Factor</text>
+    
+    <line x1="85" y1="180" x2="85" y2="210" stroke="#95a5a6" stroke-width="2" marker-end="url(#arrow)"/>
+    
+    <rect x="35" y="210" width="100" height="30" rx="4" fill="#f5f5f5" stroke="#3498db" stroke-width="1.5"/>
+    <text x="85" y="228" text-anchor="middle" font-size="10" fill="#2c3e50">Prothrombin</text>
+    
+    <line x1="85" y1="240" x2="85" y2="270" stroke="#95a5a6" stroke-width="2" marker-end="url(#arrow)"/>
+    
+    <rect x="35" y="270" width="100" height="30" rx="4" fill="#f9ebea" stroke="#e74c3c" stroke-width="1.5"/>
+    <text x="85" y="288" text-anchor="middle" font-size="10" fill="#c0392b" font-weight="bold">Thrombin</text>
+
+    <text x="85" y="370" text-anchor="middle" font-size="11" fill="#34495e">
+      <tspan x="85" dy="0">Thrombin converts</tspan>
+      <tspan x="85" dy="15">fibrinogen into</tspan>
+      <tspan x="85" dy="15">fibrin threads.</tspan>
+    </text>
+  </g>
+
+  <!-- 箭头 4->5 -->
+  <line x1="775" y1="320" x2="795" y2="320" stroke="#95a5a6" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- ================= 步骤 5: 纤维蛋白形成与血栓形成 ================= -->
+  <g transform="translate(800, 80)">
+    <rect x="0" y="0" width="170" height="480" rx="8" fill="#ffffff" filter="url(#shadow)" stroke="#e0e0e0" stroke-width="1"/>
+    <rect x="0" y="0" width="170" height="40" rx="8" fill="#f0f8ff"/>
+    <text x="85" y="25" text-anchor="middle" font-size="15" font-weight="bold" fill="#2980b9">5. Stable Clot</text>
+    
+    <!-- 图形: 纤维蛋白网 -->
+    <path d="M 30 180 Q 50 200 40 220 T 60 260" fill="none" stroke="#f39c12" stroke-width="3"/>
+    <path d="M 70 170 Q 90 190 80 210 T 100 250" fill="none" stroke="#f39c12" stroke-width="3"/>
+    <path d="M 110 180 Q 130 200 120 220 T 140 260" fill="none" stroke="#f39c12" stroke-width="3"/>
+    <path d="M 40 170 L 130 250 M 140 180 L 30 260" fill="none" stroke="#f39c12" stroke-width="3"/>
+    
+    <!-- 被困住的红细胞 -->
+    <path d="M 50 200 Q 50 185 65 185 Q 80 185 80 200 Q 80 215 65 215 Q 50 215 50 200 Z" fill="url(#rbcGrad)"/>
+    <path d="M 55 200 Q 55 190 65 190 Q 75 190 75 200 Q 75 210 65 210 Q 55 210 55 200 Z" fill="#c0392b" opacity="0.4"/>
+    
+    <path d="M 100 210 Q 100 195 115 195 Q 130 195 130 210 Q 130 225 115 225 Q 100 225 100 210 Z" fill="url(#rbcGrad)"/>
+    <path d="M 105 210 Q 105 200 115 200 Q 125 200 125 210 Q 125 220 115 220 Q 105 220 105 210 Z" fill="#c0392b" opacity="0.4"/>
+
+    <!-- 被困住的血小板 -->
+    <circle cx="80" cy="230" r="8" fill="url(#plateGrad)"/>
+    <circle cx="60" cy="250" r="6" fill="url(#plateGrad)"/>
+    <circle cx="120" cy="240" r="7" fill="url(#plateGrad)"/>
+
+    <text x="85" y="300" text-anchor="middle" font-size="9" fill="#f39c12">Fibrin Mesh</text>
+
+    <text x="85" y="370" text-anchor="middle" font-size="11" fill="#34495e">
+      <tspan x="85" dy="0">Fibrinogen turns</tspan>
+      <tspan x="85" dy="15">into fibrin threads</tspan>
+      <tspan x="85" dy="15">forming a stable clot.</tspan>
+    </text>
+  </g>
+
+</svg>

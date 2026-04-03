@@ -1,0 +1,300 @@
+<svg width="1400" height="900" viewBox="0 0 1400 900" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Thrombus Formation Process</title>
+  <desc id="desc">An English-labeled SVG infographic showing the step-by-step process of thrombus formation from endothelial injury to vessel occlusion.</desc>
+
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#07111f"/>
+      <stop offset="100%" stop-color="#0d2138"/>
+    </linearGradient>
+
+    <linearGradient id="vesselGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#8a1538"/>
+      <stop offset="50%" stop-color="#b81e4d"/>
+      <stop offset="100%" stop-color="#7a1031"/>
+    </linearGradient>
+
+    <linearGradient id="injuryGlow" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffcc66"/>
+      <stop offset="100%" stop-color="#ff6b35"/>
+    </linearGradient>
+
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#000000" flood-opacity="0.35"/>
+    </filter>
+
+    <filter id="glowRed" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="glowGold" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <marker id="arrow" markerWidth="14" markerHeight="14" refX="10" refY="7" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L14,7 L0,14 z" fill="#7fd6ff"/>
+    </marker>
+
+    <marker id="arrowWhite" markerWidth="14" markerHeight="14" refX="10" refY="7" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L14,7 L0,14 z" fill="#dff5ff"/>
+    </marker>
+
+    <style>
+      .title { font: 800 34px Arial, Helvetica, sans-serif; fill: #f4fbff; letter-spacing: 0.5px; }
+      .subtitle { font: 500 17px Arial, Helvetica, sans-serif; fill: #b7d7ea; }
+      .stepTitle { font: 700 20px Arial, Helvetica, sans-serif; fill: #ffffff; }
+      .stepText { font: 500 14px Arial, Helvetica, sans-serif; fill: #dceefa; }
+      .smallText { font: 500 13px Arial, Helvetica, sans-serif; fill: #d8ecf9; }
+      .label { font: 700 14px Arial, Helvetica, sans-serif; fill: #08253b; }
+      .whiteLabel { font: 700 14px Arial, Helvetica, sans-serif; fill: #f8fdff; }
+      .caption { font: 600 12px Arial, Helvetica, sans-serif; fill: #a9c8da; }
+      .panel { fill: rgba(255,255,255,0.06); stroke: rgba(180,220,255,0.18); stroke-width: 1.5; }
+      .flow { stroke: #7fd6ff; stroke-width: 4; fill: none; marker-end: url(#arrow); stroke-linecap: round; }
+      .flow2 { stroke: #dff5ff; stroke-width: 2.5; fill: none; marker-end: url(#arrowWhite); stroke-linecap: round; opacity: 0.9; }
+      .rbc { fill: #db4b5d; stroke: #ff93a0; stroke-width: 1; }
+      .platelet { fill: #ffd84d; stroke: #fff2a8; stroke-width: 1; }
+      .fibrin { stroke: #a8e6ff; stroke-width: 2; fill: none; opacity: 0.85; }
+      .vesselWall { fill: url(#vesselGrad); }
+      .endothelium { stroke: #ffd7df; stroke-width: 3; stroke-linecap: round; opacity: 0.95; }
+      .injury { fill: url(#injuryGlow); filter: url(#glowGold); }
+      .coagBox { fill: rgba(126, 211, 255, 0.10); stroke: rgba(126, 211, 255, 0.40); stroke-width: 1.2; }
+      .highlight { fill: rgba(255, 214, 102, 0.13); stroke: rgba(255, 214, 102, 0.45); stroke-width: 1.2; }
+    </style>
+  </defs>
+
+  <rect width="1400" height="900" fill="url(#bgGrad)"/>
+
+  <text x="70" y="70" class="title">Thrombus Formation Process</text>
+  <text x="70" y="100" class="subtitle">A simplified step-by-step illustration of how a blood clot develops inside a damaged vessel</text>
+
+  <!-- Step panels -->
+  <g filter="url(#softShadow)">
+    <rect x="60" y="140" rx="22" ry="22" width="280" height="300" class="panel"/>
+    <rect x="390" y="140" rx="22" ry="22" width="280" height="300" class="panel"/>
+    <rect x="720" y="140" rx="22" ry="22" width="280" height="300" class="panel"/>
+    <rect x="1050" y="140" rx="22" ry="22" width="280" height="300" class="panel"/>
+  </g>
+
+  <!-- Panel 1 -->
+  <g transform="translate(60,140)">
+    <text x="24" y="38" class="stepTitle">1. Endothelial Injury</text>
+    <text x="24" y="64" class="stepText">Damage exposes subendothelial collagen</text>
+    <text x="24" y="84" class="stepText">and von Willebrand factor (vWF).</text>
+
+    <!-- Vessel -->
+    <rect x="24" y="120" width="232" height="120" rx="58" class="vesselWall"/>
+    <rect x="38" y="136" width="204" height="88" rx="42" fill="#d7465b"/>
+    <line x1="50" y1="145" x2="230" y2="145" class="endothelium"/>
+    <line x1="50" y1="215" x2="230" y2="215" class="endothelium"/>
+
+    <!-- Blood cells -->
+    <ellipse cx="90" cy="178" rx="17" ry="11" class="rbc"/>
+    <ellipse cx="128" cy="195" rx="17" ry="11" class="rbc"/>
+    <ellipse cx="170" cy="170" rx="17" ry="11" class="rbc"/>
+    <ellipse cx="208" cy="192" rx="17" ry="11" class="rbc"/>
+
+    <!-- Injury -->
+    <polygon points="137,144 151,128 164,145 177,131 192,145 192,158 137,158" class="injury"/>
+    <circle cx="156" cy="152" r="6" fill="#fff3bf"/>
+    <circle cx="173" cy="150" r="5" fill="#ffd166"/>
+
+    <text x="90" y="268" class="smallText">Vessel wall injury</text>
+    <text x="126" y="286" class="caption">collagen + vWF exposed</text>
+  </g>
+
+  <!-- Panel 2 -->
+  <g transform="translate(390,140)">
+    <text x="24" y="38" class="stepTitle">2. Platelet Adhesion &amp; Activation</text>
+    <text x="24" y="64" class="stepText">Platelets stick to vWF/collagen, then</text>
+    <text x="24" y="84" class="stepText">change shape and release mediators.</text>
+
+    <rect x="24" y="120" width="232" height="120" rx="58" class="vesselWall"/>
+    <rect x="38" y="136" width="204" height="88" rx="42" fill="#d7465b"/>
+    <line x1="50" y1="145" x2="230" y2="145" class="endothelium"/>
+    <line x1="50" y1="215" x2="230" y2="215" class="endothelium"/>
+
+    <!-- Injury site -->
+    <polygon points="135,144 149,130 162,145 175,133 190,145 190,158 135,158" class="injury"/>
+
+    <!-- Platelets adhering -->
+    <g filter="url(#glowGold)">
+      <ellipse cx="145" cy="167" rx="11" ry="7" class="platelet"/>
+      <ellipse cx="160" cy="174" rx="12" ry="7" class="platelet"/>
+      <ellipse cx="177" cy="168" rx="11" ry="7" class="platelet"/>
+      <polygon points="148,168 139,160 144,173" fill="#ffe98d"/>
+      <polygon points="176,168 185,160 180,174" fill="#ffe98d"/>
+      <polygon points="161,174 160,186 167,178" fill="#ffe98d"/>
+    </g>
+
+    <!-- Secreted mediators -->
+    <circle cx="120" cy="165" r="4" fill="#9be8ff"/>
+    <circle cx="112" cy="178" r="3" fill="#9be8ff"/>
+    <circle cx="198" cy="179" r="4" fill="#9be8ff"/>
+    <circle cx="205" cy="165" r="3" fill="#9be8ff"/>
+
+    <text x="78" y="267" class="smallText">Activated platelets release</text>
+    <text x="53" y="286" class="caption">ADP, thromboxane A₂, serotonin</text>
+  </g>
+
+  <!-- Panel 3 -->
+  <g transform="translate(720,140)">
+    <text x="24" y="38" class="stepTitle">3. Platelet Aggregation</text>
+    <text x="24" y="64" class="stepText">More platelets are recruited and linked</text>
+    <text x="24" y="84" class="stepText">together by fibrinogen via GPIIb/IIIa.</text>
+
+    <rect x="24" y="120" width="232" height="120" rx="58" class="vesselWall"/>
+    <rect x="38" y="136" width="204" height="88" rx="42" fill="#d7465b"/>
+    <line x1="50" y1="145" x2="230" y2="145" class="endothelium"/>
+    <line x1="50" y1="215" x2="230" y2="215" class="endothelium"/>
+
+    <!-- platelet plug -->
+    <g filter="url(#glowGold)">
+      <ellipse cx="118" cy="177" rx="13" ry="8" class="platelet"/>
+      <ellipse cx="136" cy="167" rx="13" ry="8" class="platelet"/>
+      <ellipse cx="153" cy="180" rx="13" ry="8" class="platelet"/>
+      <ellipse cx="170" cy="168" rx="13" ry="8" class="platelet"/>
+      <ellipse cx="188" cy="180" rx="13" ry="8" class="platelet"/>
+      <ellipse cx="205" cy="170" rx="12" ry="8" class="platelet"/>
+      <ellipse cx="151" cy="158" rx="11" ry="7" class="platelet"/>
+      <ellipse cx="172" cy="156" rx="11" ry="7" class="platelet"/>
+    </g>
+
+    <!-- fibrinogen bridges -->
+    <path d="M129 170 C137 160, 145 160, 153 173" class="fibrin"/>
+    <path d="M145 181 C155 170, 162 170, 171 170" class="fibrin"/>
+    <path d="M168 168 C177 160, 184 165, 193 177" class="fibrin"/>
+    <path d="M151 160 C160 150, 168 149, 176 158" class="fibrin"/>
+
+    <text x="89" y="267" class="smallText">Primary platelet plug forms</text>
+    <text x="86" y="286" class="caption">temporary and unstable clot</text>
+  </g>
+
+  <!-- Panel 4 -->
+  <g transform="translate(1050,140)">
+    <text x="24" y="38" class="stepTitle">4. Coagulation &amp; Stable Thrombus</text>
+    <text x="24" y="64" class="stepText">Thrombin converts fibrinogen to fibrin,</text>
+    <text x="24" y="84" class="stepText">stabilizing the platelet plug.</text>
+
+    <rect x="24" y="120" width="232" height="120" rx="58" class="vesselWall"/>
+    <rect x="38" y="136" width="204" height="88" rx="42" fill="#d7465b"/>
+    <line x1="50" y1="145" x2="230" y2="145" class="endothelium"/>
+    <line x1="50" y1="215" x2="230" y2="215" class="endothelium"/>
+
+    <!-- Thrombus mass -->
+    <g filter="url(#glowRed)">
+      <path d="M88,184
+               C103,152 126,148 145,153
+               C161,136 188,137 204,151
+               C223,151 235,166 230,184
+               C239,202 227,217 206,220
+               C193,234 168,234 151,225
+               C130,230 107,221 95,208
+               C83,203 80,193 88,184 Z"
+            fill="#ffd94d" opacity="0.92"/>
+    </g>
+
+    <!-- fibrin mesh -->
+    <path d="M105 165 L210 208" class="fibrin"/>
+    <path d="M115 206 L212 160" class="fibrin"/>
+    <path d="M92 186 L224 186" class="fibrin"/>
+    <path d="M142 150 L161 223" class="fibrin"/>
+    <path d="M184 149 L132 221" class="fibrin"/>
+
+    <!-- trapped RBC -->
+    <ellipse cx="126" cy="188" rx="14" ry="9" class="rbc"/>
+    <ellipse cx="185" cy="192" rx="14" ry="9" class="rbc"/>
+    <ellipse cx="161" cy="171" rx="14" ry="9" class="rbc"/>
+
+    <text x="66" y="267" class="smallText">Fibrin mesh traps blood cells</text>
+    <text x="51" y="286" class="caption">thrombus enlarges, may obstruct flow</text>
+  </g>
+
+  <!-- Flow arrows between panels -->
+  <path d="M342 290 C360 290, 368 290, 386 290" class="flow"/>
+  <path d="M672 290 C690 290, 698 290, 716 290" class="flow"/>
+  <path d="M1002 290 C1020 290, 1028 290, 1046 290" class="flow"/>
+
+  <!-- Bottom section -->
+  <g filter="url(#softShadow)">
+    <rect x="60" y="490" rx="24" ry="24" width="1270" height="340" class="panel"/>
+  </g>
+
+  <text x="90" y="535" class="stepTitle">Key Biological Events</text>
+
+  <!-- Left explanatory column -->
+  <g transform="translate(90,560)">
+    <rect x="0" y="0" width="360" height="220" rx="18" class="highlight"/>
+    <text x="22" y="34" class="whiteLabel">Triggers</text>
+    <text x="22" y="62" class="stepText">• Endothelial damage</text>
+    <text x="22" y="88" class="stepText">• Sluggish or turbulent blood flow</text>
+    <text x="22" y="114" class="stepText">• Hypercoagulable states</text>
+
+    <text x="22" y="154" class="whiteLabel">Early response</text>
+    <text x="22" y="182" class="stepText">Platelets adhere to exposed collagen via vWF,</text>
+    <text x="22" y="204" class="stepText">become activated, and recruit more platelets.</text>
+  </g>
+
+  <!-- Middle coagulation cascade simplified -->
+  <g transform="translate(490,560)">
+    <rect x="0" y="0" width="370" height="220" rx="18" class="coagBox"/>
+    <text x="22" y="34" class="whiteLabel">Simplified Coagulation Pathway</text>
+
+    <rect x="26" y="56" width="110" height="34" rx="10" fill="#163954" stroke="#68cfff" stroke-width="1.2"/>
+    <text x="81" y="78" text-anchor="middle" class="smallText">Tissue factor</text>
+
+    <rect x="164" y="56" width="110" height="34" rx="10" fill="#163954" stroke="#68cfff" stroke-width="1.2"/>
+    <text x="219" y="78" text-anchor="middle" class="smallText">Thrombin</text>
+
+    <rect x="95" y="132" width="110" height="34" rx="10" fill="#163954" stroke="#68cfff" stroke-width="1.2"/>
+    <text x="150" y="154" text-anchor="middle" class="smallText">Fibrinogen</text>
+
+    <rect x="232" y="132" width="110" height="34" rx="10" fill="#163954" stroke="#68cfff" stroke-width="1.2"/>
+    <text x="287" y="154" text-anchor="middle" class="smallText">Fibrin</text>
+
+    <path d="M136 73 C148 73, 152 73, 162 73" class="flow2"/>
+    <path d="M219 92 C219 104, 198 112, 167 128" class="flow2"/>
+    <path d="M206 149 C216 149, 222 149, 230 149" class="flow2"/>
+
+    <text x="22" y="198" class="caption">Result: a stronger, more durable clot forms.</text>
+  </g>
+
+  <!-- Right outcomes -->
+  <g transform="translate(900,560)">
+    <rect x="0" y="0" width="390" height="220" rx="18" class="highlight"/>
+    <text x="22" y="34" class="whiteLabel">Possible Outcomes</text>
+    <text x="22" y="66" class="stepText">• Hemostasis: bleeding is stopped</text>
+    <text x="22" y="96" class="stepText">• Pathologic thrombosis: excessive clot growth</text>
+    <text x="22" y="126" class="stepText">• Vessel narrowing or complete occlusion</text>
+    <text x="22" y="156" class="stepText">• Embolization if part of the clot breaks off</text>
+
+    <g transform="translate(245,78)">
+      <rect x="0" y="0" width="110" height="82" rx="22" class="vesselWall"/>
+      <rect x="10" y="12" width="90" height="58" rx="18" fill="#d7465b"/>
+      <path d="M34,41 C42,20 75,20 80,41 C78,60 45,62 34,41 Z" fill="#ffd84d" stroke="#fff0a8" stroke-width="1.4"/>
+      <text x="55" y="102" text-anchor="middle" class="caption">Occlusion</text>
+    </g>
+  </g>
+
+  <!-- Legend -->
+  <g transform="translate(60,845)">
+    <circle cx="18" cy="-6" r="10" class="platelet"/>
+    <text x="40" y="-1" class="caption">Platelet</text>
+
+    <ellipse cx="145" cy="-6" rx="14" ry="9" class="rbc"/>
+    <text x="170" y="-1" class="caption">Red blood cell</text>
+
+    <line x1="320" y1="-6" x2="360" y2="-6" class="fibrin"/>
+    <text x="372" y="-1" class="caption">Fibrin strand</text>
+
+    <rect x="490" y="-18" width="26" height="20" rx="6" class="injury"/>
+    <text x="528" y="-1" class="caption">Injury / exposed subendothelium</text>
+  </g>
+</svg>

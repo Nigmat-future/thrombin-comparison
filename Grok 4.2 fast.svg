@@ -1,0 +1,141 @@
+<svg width="1180" height="620" viewBox="0 0 1180 620" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .title { font: bold 32px system-ui, Arial; fill: #1e2937; }
+      .stage-title { font: bold 18px system-ui, Arial; fill: #1e40af; }
+      .caption { font: 13px system-ui, Arial; fill: #334155; text-anchor: middle; }
+    </style>
+    <marker id="arrow" viewBox="0 -5 10 10" refX="5" refY="0" markerWidth="5" markerHeight="8" orient="auto">
+      <path d="M0,-5 L10,0 L0,5" fill="#475569"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1180" height="620" fill="#f8fafc"/>
+
+  <!-- Main Title -->
+  <text x="590" y="48" class="title" text-anchor="middle">Thrombus Formation Process</text>
+  <text x="590" y="78" font-size="17" fill="#64748b" text-anchor="middle">How a Blood Clot Develops in a Damaged Vessel</text>
+
+  <!-- Stage 1: Normal Vessel -->
+  <text x="145" y="125" class="stage-title" text-anchor="middle">1. Normal Blood Vessel</text>
+  
+  <!-- Vessel wall -->
+  <rect x="35" y="155" width="215" height="105" rx="22" ry="22" fill="#fee2e2" stroke="#334155" stroke-width="22"/>
+  <!-- Blood lumen -->
+  <rect x="48" y="168" width="190" height="80" rx="15" ry="15" fill="#fda4af" stroke="#e11d48" stroke-width="4"/>
+  
+  <!-- RBCs -->
+  <circle cx="75" cy="188" r="9" fill="#e11d48"/>
+  <circle cx="115" cy="200" r="9" fill="#e11d48"/>
+  <circle cx="165" cy="175" r="9" fill="#e11d48"/>
+  <circle cx="195" cy="215" r="9" fill="#e11d48"/>
+  
+  <!-- Platelets (dispersed) -->
+  <ellipse cx="68" cy="235" rx="5" ry="8" fill="#6d28d9" transform="rotate(-35 68 235)"/>
+  <ellipse cx="135" cy="165" rx="5" ry="8" fill="#6d28d9" transform="rotate(40 135 165)"/>
+  <ellipse cx="205" cy="245" rx="5" ry="8" fill="#6d28d9" transform="rotate(-25 205 245)"/>
+  
+  <text x="145" y="295" class="caption">Intact endothelium</text>
+  <text x="145" y="315" class="caption">Normal blood flow</text>
+
+  <!-- Arrow 1 -->
+  <line x1="270" y1="205" x2="325" y2="205" stroke="#475569" stroke-width="6" marker-end="url(#arrow)"/>
+
+  <!-- Stage 2: Endothelial Injury -->
+  <text x="460" y="125" class="stage-title" text-anchor="middle">2. Endothelial Injury</text>
+  
+  <!-- Vessel wall -->
+  <rect x="350" y="155" width="215" height="105" rx="22" ry="22" fill="#fee2e2" stroke="#334155" stroke-width="22"/>
+  <!-- Blood lumen -->
+  <rect x="363" y="168" width="190" height="80" rx="15" ry="15" fill="#fda4af" stroke="#e11d48" stroke-width="4"/>
+  
+  <!-- Injury site (exposed subendothelium) -->
+  <rect x="445" y="163" width="22" height="88" rx="4" fill="#ca8a04" opacity="0.45"/>
+  <path d="M 448 168 L 455 245" stroke="#854d0e" stroke-width="11" opacity="0.3"/>
+  
+  <!-- RBCs -->
+  <circle cx="390" cy="190" r="9" fill="#e11d48"/>
+  <circle cx="510" cy="205" r="9" fill="#e11d48"/>
+  
+  <!-- Approaching platelet -->
+  <ellipse cx="485" cy="175" rx="6" ry="9" fill="#6d28d9" transform="rotate(-45 485 175)"/>
+  
+  <text x="460" y="295" class="caption">Vessel wall damage</text>
+  <text x="460" y="315" class="caption">Exposure of collagen</text>
+
+  <!-- Arrow 2 -->
+  <line x1="585" y1="205" x2="640" y2="205" stroke="#475569" stroke-width="6" marker-end="url(#arrow)"/>
+
+  <!-- Stage 3: Platelet Adhesion -->
+  <text x="775" y="125" class="stage-title" text-anchor="middle">3. Platelet Adhesion &amp; Activation</text>
+  
+  <!-- Vessel wall -->
+  <rect x="665" y="155" width="215" height="105" rx="22" ry="22" fill="#fee2e2" stroke="#334155" stroke-width="22"/>
+  <!-- Blood lumen -->
+  <rect x="678" y="168" width="190" height="80" rx="15" ry="15" fill="#fda4af" stroke="#e11d48" stroke-width="4"/>
+  
+  <!-- Injury site -->
+  <rect x="760" y="163" width="22" height="88" rx="4" fill="#ca8a04" opacity="0.45"/>
+  
+  <!-- Activated platelets clustering at injury site -->
+  <ellipse cx="730" cy="225" rx="6" ry="9" fill="#6d28d9" transform="rotate(-30 730 225)"/>
+  <ellipse cx="755" cy="207" rx="6" ry="9" fill="#6d28d9" transform="rotate(35 755 207)"/>
+  <ellipse cx="780" cy="232" rx="6" ry="9" fill="#6d28d9" transform="rotate(-50 780 232)"/>
+  <ellipse cx="805" cy="212" rx="6" ry="9" fill="#6d28d9" transform="rotate(25 805 212)"/>
+  <ellipse cx="825" cy="227" rx="6" ry="9" fill="#6d28d9" transform="rotate(55 825 227)"/>
+  
+  <!-- RBCs -->
+  <circle cx="700" cy="185" r="9" fill="#e11d48"/>
+  <circle cx="865" cy="195" r="9" fill="#e11d48"/>
+
+  <text x="775" y="295" class="caption">Platelets adhere and activate</text>
+  <text x="775" y="315" class="caption">Release of signaling molecules</text>
+
+  <!-- Arrow 3 -->
+  <line x1="900" y1="205" x2="955" y2="205" stroke="#475569" stroke-width="6" marker-end="url(#arrow)"/>
+
+  <!-- Stage 4: Thrombus Formation -->
+  <text x="1070" y="125" class="stage-title" text-anchor="middle">4. Thrombus Formation</text>
+  
+  <!-- Vessel wall -->
+  <rect x="960" y="155" width="215" height="105" rx="22" ry="22" fill="#fee2e2" stroke="#334155" stroke-width="22"/>
+  <!-- Blood lumen -->
+  <rect x="973" y="168" width="190" height="80" rx="15" ry="15" fill="#fda4af" stroke="#e11d48" stroke-width="4"/>
+  
+  <!-- Injury base -->
+  <rect x="1050" y="163" width="22" height="88" rx="4" fill="#ca8a04" opacity="0.35"/>
+  
+  <!-- Fibrin mesh -->
+  <line x1="990" y1="175" x2="1145" y2="235" stroke="#475569" stroke-width="3.5" opacity="0.85"/>
+  <line x1="995" y1="235" x2="1140" y2="172" stroke="#475569" stroke-width="3" opacity="0.85"/>
+  <line x1="1005" y1="180" x2="1130" y2="225" stroke="#475569" stroke-width="2.5" opacity="0.75"/>
+  <line x1="1015" y1="220" x2="1125" y2="185" stroke="#475569" stroke-width="2" opacity="0.7"/>
+  
+  <!-- Thrombus mass -->
+  <ellipse cx="1075" cy="205" rx="52" ry="39" fill="#4f46e5" opacity="0.28"/>
+  
+  <!-- Platelets trapped in clot -->
+  <ellipse cx="1025" cy="190" rx="6" ry="10" fill="#6d28d9" transform="rotate(-40 1025 190)"/>
+  <ellipse cx="1048" cy="175" rx="7" ry="9" fill="#6d28d9" transform="rotate(35 1048 175)"/>
+  <ellipse cx="1085" cy="185" rx="6" ry="9" fill="#6d28d9" transform="rotate(-25 1085 185)"/>
+  <ellipse cx="1115" cy="205" rx="6" ry="10" fill="#6d28d9" transform="rotate(50 1115 205)"/>
+  <ellipse cx="1060" cy="225" rx="6" ry="8" fill="#6d28d9" transform="rotate(20 1060 225)"/>
+  
+  <!-- Trapped RBCs -->
+  <circle cx="1010" cy="205" r="8.5" fill="#e11d48" opacity="0.85"/>
+  <circle cx="1125" cy="195" r="8" fill="#e11d48" opacity="0.8"/>
+
+  <text x="1070" y="295" class="caption">Coagulation cascade produces fibrin</text>
+  <text x="1070" y="315" class="caption">Stable thrombus (blood clot)</text>
+
+  <!-- Legend -->
+  <rect x="45" y="370" width="1090" height="72" rx="12" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="2"/>
+  <text x="80" y="395" font-size="13" fill="#334155">● Red = Red Blood Cells (RBCs)</text>
+  <text x="80" y="417" font-size="13" fill="#334155">◆ Purple = Platelets</text>
+  <text x="320" y="395" font-size="13" fill="#334155">Brown area = Injury / Exposed collagen</text>
+  <text x="320" y="417" font-size="13" fill="#334155">Gray lines = Fibrin strands</text>
+  <text x="680" y="395" font-size="13" fill="#334155">Process follows Virchow's triad factors</text>
+  <text x="680" y="417" font-size="13" fill="#334155">(Endothelial injury, stasis, hypercoagulability)</text>
+
+</svg>
